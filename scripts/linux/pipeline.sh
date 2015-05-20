@@ -43,7 +43,7 @@ usage() {
 #  * is it necessary to cd to log directory ?
 #  * write the pid file to the run directory instead of log directory
 start() {
-  usr_config=
+	usr_config=
 	if [ $# -gt 1 ] && [ -n "$2" ]; then
 		usr_config=$2
 	fi
@@ -57,7 +57,7 @@ start() {
 	else
 		cd $LOG_DIR
 		if [ -z $usr_config ]; then
-      java $JVMARGS fr.eolya.simplepipeline.SimplePipeline -p $1 $ARGS >> $LOG_DIR/pipeline.output 2>&1  &
+			java $JVMARGS fr.eolya.simplepipeline.SimplePipeline -p "$CONF_DIR/pipeline/simplepipeline.xml" $1 $ARGS >> $LOG_DIR/pipeline.output 2>&1  &
 		else
 			java $JVMARGS fr.eolya.simplepipeline.SimplePipeline -p "$usr_config" $1 $ARGS >> $LOG_DIR/pipeline.output 2>&1  &
 		fi

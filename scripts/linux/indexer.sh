@@ -75,7 +75,7 @@ start() {
 	else
 		cd $LOG_DIR
 		if [ -z $usr_config ]; then
-			java $JVMARGS fr.eolya.indexer.Indexer -p $1 $ARGS >> "$LOG_DIR/indexer$PROFILE.output" 2>&1  &
+			java $JVMARGS fr.eolya.indexer.Indexer -p "$CONF_DIR/indexer/indexer$PROFILE.xml" $1 $ARGS >> "$LOG_DIR/indexer$PROFILE.output" 2>&1  &
 		else
 			java $JVMARGS fr.eolya.indexer.Indexer -p "$usr_config" $1 $ARGS >> "$LOG_DIR/indexer$PROFILE.output" 2>&1  &
 		fi
