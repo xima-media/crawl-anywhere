@@ -44,7 +44,7 @@ usage() {
 #  * write the pid file to the run directory instead of log directory
 start() {
   usr_config=
-	if [[ $# -gt 1 ]] && [[ -n "$2" ]]; then
+	if [ $# -gt 1 ] && [ -n "$2" ]; then
 		usr_config=$2
 	fi
 
