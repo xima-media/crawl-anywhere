@@ -15,10 +15,10 @@ SCRIPTS=$HOME/scripts
 . $SCRIPTS/init.inc.sh
 
 usage() {
-	echo "Usage : $SCRIPTS/switchCore.sh {CoresDirectory} {ScriptDirectory}"
+	echo "Usage : $SCRIPTS/switchCore.sh {CoresDirectory}"
 }
 
-if [ $# -lt 2 ]; then
+if [ $# -lt 1 ]; then
 	usage
 	exit 0
 fi
