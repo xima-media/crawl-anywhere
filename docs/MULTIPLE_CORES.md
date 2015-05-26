@@ -87,7 +87,7 @@ opt/
 
 Now you can start using the switchCore.sh script by calling
 ```
-. /opt/crawler/scripts/switchCore.sh /opt/crawler/cores/
+./opt/crawler/scripts/switchCore.sh /opt/crawler/cores/
 ```
 
 The first argument is the path to the cores configured as described above. 
@@ -98,6 +98,6 @@ To configure an new cronjob you can edit your cronjob table with `crontab -e` (b
 You can switch the cores for e.g. 15 minutes and log the output.
 
 ```
-*/15 * * * * ( date 1>&2 ; . /opt/crawler/scripts/switchCore.sh /opt/crawler/cores/) >>
+*/15 * * * * ( date 1>&2 ; ./opt/crawler/scripts/switchCore.sh /opt/crawler/cores/) >>
   /opt/crawler/log/cronjob/switchCore.output 2>&1
 ```
