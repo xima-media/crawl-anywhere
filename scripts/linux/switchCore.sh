@@ -52,7 +52,7 @@ nextDir() {
 				result=$x
 				return 0
 			fi
-			if [ "$x" == "$1$2/" ]; then
+			if [ "$x" = "$1$2/" ]; then
 				curDir=1
 			fi
 		fi
@@ -72,25 +72,25 @@ handleScript() {
 	fi
 
 	# pipeline
-	sh "$2pipeline.sh" stop &> /dev/null
+	sh "$2/pipeline.sh" stop &> /dev/null
 	sleep 10
-	sh "$2pipeline.sh" start "$1config/pipeline/simplepipeline.xml" &> /dev/null
+	sh "$2/pipeline.sh" start "$1config/pipeline/simplepipeline.xml" &> /dev/null
 	sleep 5
-	sh "$2pipeline.sh" status
+	sh "$2/pipeline.sh" status
 
 	# indexer
-	sh "$2indexer.sh" stop &> /dev/null
+	sh "$2/indexer.sh" stop &> /dev/null
 	sleep 10
-	sh "$2indexer.sh" start "$1config/indexer/indexer.xml" &> /dev/null
+	sh "$2/indexer.sh" start "$1config/indexer/indexer.xml" &> /dev/null
 	sleep 5
-	sh "$2indexer.sh" status
+	sh "$2/indexer.sh" status
 
 	return 0
 }
 
 ### Main ###
 
-[[ -n $PID_PIPELINE ]] && PID=$PID_PIPELINE || PID=$PID_INDEXER
+[ -n $PID_PIPELINE ] && PID=$PID_PIPELINE || PID=$PID_INDEXER
 
 # get current running core
 currentCore=
