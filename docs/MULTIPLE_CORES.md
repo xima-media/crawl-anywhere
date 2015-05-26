@@ -18,7 +18,7 @@ Now create your cores as directories inside this and configure them.
 ```
 3. mkdir cores/<my_first_corename>
 4. cd cores/<my_first_corename>
-5. mkdir {config,indexer_queue,solr_queue}
+5. mkdir {config,pipeline_queue,indexer_queue}
 6. cd config
 ```
 
@@ -42,16 +42,22 @@ Configure the path to the queue as created at step 5:
 ```xml
 # simplepipeline.xml
 <pipeline>
-  <connector classname="...">
-    <param name="rootdir">cores/<my_first_corename>/indexer_queue</param>
+  <connector classname="fr.eolya.simplepipeline.connector.FileQueueConnector">
+    <param name="rootdir">cores/{my_first_corename}/pipeline_queue</param>
     ...
   </connector>
-  ...
+  <stages>
+    <stage classname="fr.eolya.simplepipeline.stage.IndexerQueueWriter">
+      <param name="queuedir">cores/{my_first_corename}/indexer_queue</param>
+      ...
+    <stage>
+    ...
+  </stages>
 </pipeline>
 
 # indexer.xml
 <indexer>
-  <param name="queuepath">cores/<my_first_corename>/solr_queue</param>
+  <param name="queuepath">cores/{my_first_corename}/indexer_queue</param>
   ...
 </indexer>
 ```
@@ -77,7 +83,7 @@ opt/
           └ profiles → /opt/crawler/config/profiles
           └ profiles.sm → /opt/crawler/config/profiles.sm/
         └ indexer_queue/
-        └ solr_queue/
+        └ pipeline_queue/
 
       └ my_second_corename/
         └ ...
