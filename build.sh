@@ -73,7 +73,7 @@ cd $DEV/java/simplepipeline
 rm -rf $DEV/java/simplepipeline/dependency
 #mvn dependency:copy-dependencies
 cp target/pipeline-0.0.1-SNAPSHOT.jar $DISTRIB/bin/eolya-pipeline-$VERSION.jar
- 
+
 # indexer
 cd $DEV/java/indexer
 #mvn clean
@@ -141,6 +141,7 @@ cp -r $DEV/java/crawler/config/crawler/scripts $DISTRIB/config/crawler/.
 
 mkdir -p $DISTRIB/config/pipeline
 cp $DEV/java/simplepipeline/config/pipeline/simplepipeline-default.xml $DISTRIB/config/pipeline/simplepipeline.xml
+cp $DEV/java/simplepipeline/config/pipeline/simplepipeline-template.xml $DISTRIB/config/pipeline/simplepipeline-template.xml
 cp $DEV/java/simplepipeline/config/pipeline/solrmapping.xml $DISTRIB/config/pipeline/.
 cp $DEV/java/simplepipeline/config/pipeline/solrboost.xml $DISTRIB/config/pipeline/.
 cp $DEV/java/simplepipeline/config/pipeline/contenttypemapping.txt $DISTRIB/config/pipeline/.
@@ -149,6 +150,7 @@ cp -r $DEV/java/simplepipeline/config/pipeline/scripts $DISTRIB/config/pipeline/
 
 mkdir -p $DISTRIB/config/indexer
 cp $DEV/java/indexer/config/indexer/indexer-default.xml $DISTRIB/config/indexer/indexer.xml
+cp $DEV/java/indexer/config/indexer/indexer-template.xml $DISTRIB/config/indexer/indexer-template.xml
 
 cp -r $DEV/java/utils/config/* $DISTRIB/config/.
 

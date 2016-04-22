@@ -74,7 +74,7 @@ rm solrmapping.xml
 cp $CA_HOME/config/pipeline/solrmapping.xml .
 rm simplepipeline.xml
 
-# Variables for simplepipeline.xml.tmpl
+# Variables for simplepipeline-template.xml
 logfilename="$newCore/log/pipeline.log"
 rootdir="$newCore/pipeline_queue"
 onsuccessmoveto="$newCore/pipeline_queue/_success/{//source_id}"
@@ -86,8 +86,8 @@ queuedir="$newCore/indexer_queue"
 solrmappings="$newCore/config/pipeline/solrmapping.xml"
 solrboosts="$newCore/config/pipeline/solrboost.xml"
 
-renderTemplate simplepipeline.xml.tmpl > simplepipeline.xml
-rm simplepipeline.xml.tmpl
+renderTemplate simplepipeline-template.xml > simplepipeline.xml
+rm simplepipeline-template.xml
 
 # Indexer config
 cd config
@@ -96,15 +96,15 @@ cd indexer
 ln -s $CA_HOME/config/indexer/* .
 rm indexer.xml
 
-# Variables for indexer.xml.tmpl
+# Variables for indexer-template.xml
 corename="$1"
 logfilename="$newCore/log/indexer.log"
 queuepath="$newCore/indexer_queue"
 onsuccessmoveto="$newCore/indexer_queue/_success"
 onerrormoveto="$newCore/indexer_queue/_error"
 
-renderTemplate indexer.xml.tmpl > indexer.xml
-rm indexer.xml.tmpl
+renderTemplate indexer-template.xml > indexer.xml
+rm indexer-template.xml
 
 ###
 # Solr core

@@ -5,14 +5,14 @@
 
 		<!-- the following mapping (source_id to sourceid) is mandatory. Never remove or modify it if -->
 		<mapping source="source_id"                         target="sourceid" />
-	
+
 		<mapping source="source_type"                       target="type_str" />
 		<mapping source="source_name"                       target="source_text,source_str" />
 		<mapping source="source_country"                    target="country"                                normalization="lowercase" />
 		<mapping source="item_language"                   	target="language"                               normalization="lowercase" />
 		<mapping source="source_collections" 		        target="collection"                 split=","	normalization="lowercase" />
 		<mapping source="source_tags" 		                target="tag"                        split=","	normalization="lowercase" />
-	
+
 		<mapping source="item_id"                           target="id" />
 		<mapping source="item_contenttype"                  target="contenttype" />
 		<mapping source="item_contenttyperoot"              target="contenttyperoot" />
@@ -26,13 +26,13 @@
 
 		<mapping source="parser_date"  	                 	target="publishtime" 							normalization="date" />
 		<mapping source="parser_imageurl"  	            	target="urlimage_str" />
-	    
-		<mapping source="meta_custom_(.*)"  	            target="$_str,$_text" />    
-		
-		<mapping source="meta_extracted_(.*)"  	            target="$_str,$_text" />    
-	    
+
+		<mapping source="meta_custom_(.*)"  	            target="$_str,$_text" />
+
+		<mapping source="meta_extracted_(.*)"  	            target="$_str,$_text" />
+
 		<mapping source="parser_title"                      target="title_dis" />
-	
+
 		<mapping source="item_language,parser_title,text" target="content_%1$s"     format="%2$s\n%3$s">
 			<condition source="item_language" type="in">en,fr,ar,bg,ca,cjk,cz,da,de,el,es,eu,fa,fi,ga,gl,hi,hy,hu,id,it,ja,lv,nl,no,pt,ru,ro,sv,th,tr</condition>
 		</mapping>
@@ -47,6 +47,10 @@
 			<condition source="item_language" type="not_in">en,fr,ar,bg,ca,cjk,cz,da,de,el,es,eu,fa,fi,ga,gl,hi,hy,hu,id,it,ja,lv,nl,no,pt,ru,ro,sv,th,tr</condition>
 		</mapping>
 
+		<mapping source="parser_title,text" target="content" />
+
+		<mapping source="parser_title"      target="title" />
+
 	</target>
-	
+
 </solrmappings>

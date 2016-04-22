@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<indexer>
+	<solr>
+		<param name="baseurl">http://localhost:8983/solr/</param>
+		<param name="corename">${corename}</param>
+		<!--param name="requesthandler">/updatex</param-->
+		<param name="commitwithin">60000</param>
+		<param name="commiteach">0</param>
+		<param name="optimizeeach">0</param>
+		<param name="javabin">0</param>
+	</solr>
+	<param name="witnessfilespath">log</param>
+	<param name="logfilename">${logfilename}</param>
+	<param name="queuepath">${queuepath}</param>
+	<param name="queuefilepattern">^j[.].*[.]xml$</param>
+	<!--param name="onsuccessmoveto">${onsuccessmoveto}</param-->
+	<param name="onerrormoveto">${onerrormoveto}</param>
+</indexer>	
