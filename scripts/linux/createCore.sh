@@ -61,7 +61,7 @@ mkdir indexer_queue
 # Configuration
 ###
 
-cd config
+cd $newCore/config
 ln -s $CA_HOME/config/crawler crawler
 ln -s $CA_HOME/config/profiles profiles
 ln -s $CA_HOME/config/profiles.sm profiles.sm
@@ -90,7 +90,7 @@ renderTemplate simplepipeline-template.xml > simplepipeline.xml
 rm simplepipeline-template.xml
 
 # Indexer config
-cd config
+cd $newCore/config
 mkdir indexer
 cd indexer
 ln -s $CA_HOME/config/indexer/* .
