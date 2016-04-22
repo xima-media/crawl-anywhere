@@ -23,7 +23,7 @@ usage() {
 
 # replaces placeholders in given file
 renderTemplate() {
-	eval "echo \"$(cat $1)\""
+	eval "echo \"$(cat $1 | sed "s/\"/'/g")\""
 }
 
 ###
