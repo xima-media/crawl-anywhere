@@ -103,10 +103,24 @@ fi
 
 # get next core
 nextDir "$1" "$currentCore"
+
+ignoredDirs="-I_error -I_success"
+pipelinerQueue="pipeline_queue"
+indexerQueue="indexer_queue"
+
+until [ "$(ls -A $ignoredDirs $result$pipelinerQueue)" ] && [ "$(ls -A $ignoredDirs $result$indexerQueue)" ]; do
+	nextCore="$( echo $result | grep -oP "(?<=$1)[^/]+" )"
+	nextDir "$1" "$nextCore"
+done
+
 nextCore="$( echo $result | grep -oP "(?<=$1)[^/]+" )"
 
 # try switch
-echo "Trying to switch core from '$currentCore' to '$nextCore'"
-handleScript "$1$nextCore/" "$SCRIPTS"
+if [ $currentCore != $nextCore ]; then
+	echo "Trying to switch core from '$currentCore' to '$nextCore'"
+	handleScript "$1$nextCore/" "$SCRIPTS"
+else
+	echo "Stay on core '$currentCore' because no other core has got documents"
+fi
 
 exit 0;
