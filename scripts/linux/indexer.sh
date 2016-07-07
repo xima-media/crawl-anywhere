@@ -109,7 +109,8 @@ case $1 in
 	status)
 		PID=$(get_pid) || true
 		if [ -n "$PID" ]; then
-			echo "Indexer is running (pid $PID) $PROFILE"
+			configFile="$( ps -o args $PID | grep -oP '(?<=\s-p\s)\S*' )"
+			echo "Indexer is running (pid $PID) $PROFILE (config $configFile)"
 			exit 0;
 		else
 			echo "Indexer is not running $PROFILE"

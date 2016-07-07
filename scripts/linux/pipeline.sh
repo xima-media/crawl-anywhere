@@ -91,7 +91,8 @@ case $1 in
 	status)
 		PID=$(get_pid) || true
 		if [ -n "$PID" ]; then
-			echo "Pipeline is running (pid $PID)"
+			configFile="$( ps -o args $PID | grep -oP '(?<=\s-p\s)\S*' )"
+			echo "Pipeline is running (pid $PID) (config $configFile)"
 			exit 0;
 		else
 			echo "Pipeline is not running"
