@@ -108,7 +108,7 @@ ignoredDirs="-I_error -I_success"
 pipelinerQueue="pipeline_queue"
 indexerQueue="indexer_queue"
 
-until [ "$(ls -A $ignoredDirs $result$pipelinerQueue)" ] && [ "$(ls -A $ignoredDirs $result$indexerQueue)" ]; do
+while [ ! "$(ls -A $ignoredDirs $result$pipelinerQueue)" ] && [ ! "$(ls -A $ignoredDirs $result$indexerQueue)" ]; do
 	nextCore="$( echo $result | grep -oP "(?<=$1)[^/]+" )"
 	nextDir "$1" "$nextCore"
 done
